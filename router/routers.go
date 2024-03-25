@@ -12,8 +12,8 @@ func Router() *gin.Engine {
 
 	user := r.Group("/user")
 	{
-		user.GET("/info", controllers.GetUserInfo)
-		user.POST("/list", controllers.GerList)
+		user.GET("/info", controllers.UserController{}.GetUserInfo)
+		user.POST("/list", controllers.UserController{}.GetList)
 
 		user.PUT("/add", func(context *gin.Context) {
 			context.String(http.StatusOK, "user add")
@@ -22,6 +22,11 @@ func Router() *gin.Engine {
 		user.DELETE("/delete", func(context *gin.Context) {
 			context.String(http.StatusOK, "user delete")
 		})
+	}
+
+	order := r.Group("/order")
+	{
+		order.POST("/list", controllers.OrderController{}.GetList)
 	}
 
 	return r
