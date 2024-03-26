@@ -2,6 +2,7 @@ package router
 
 import (
 	"GinRanking/controllers"
+	"GinRanking/pkg/logger"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -9,6 +10,9 @@ import (
 func Router() *gin.Engine {
 
 	r := gin.Default()
+
+	r.Use(gin.LoggerWithConfig(logger.LoggerToFile()))
+	r.Use(logger.Recover)
 
 	user := r.Group("/user")
 	{

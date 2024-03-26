@@ -1,6 +1,8 @@
 package controllers
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+)
 
 type UserController struct{}
 
@@ -11,5 +13,11 @@ func (u UserController) GetUserInfo(c *gin.Context) {
 }
 
 func (u UserController) GetList(c *gin.Context) {
-	ReturnError(c, 4004, "No relevant user information")
+	//logger.Write("log information", "user")
+
+	num1 := 1
+	num2 := 0
+	num3 := num1 / num2
+
+	ReturnError(c, 4004, num3)
 }
