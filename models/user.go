@@ -16,3 +16,9 @@ func GetUserTest(id int) (User, error) {
 	err := dao.Db.Where("id = ?", id).First(&user).Error
 	return user, err
 }
+
+func AddUser(username string) (int, error) {
+	user := User{Name: username}
+	err := dao.Db.Create(&user).Error
+	return user.Id, err
+}

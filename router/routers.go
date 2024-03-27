@@ -19,9 +19,7 @@ func Router() *gin.Engine {
 		user.GET("/info/:id", controllers.UserController{}.GetUserInfo)
 		user.POST("/list", controllers.UserController{}.GetList)
 
-		user.PUT("/add", func(context *gin.Context) {
-			context.String(http.StatusOK, "user add")
-		})
+		user.POST("/add", controllers.UserController{}.AddUser)
 
 		user.DELETE("/delete", func(context *gin.Context) {
 			context.String(http.StatusOK, "user delete")
